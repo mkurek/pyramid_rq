@@ -17,16 +17,17 @@ class PyramidWorker(Worker):
         self.environment = environment
 
     def perform_job(self, job):
-        self.procline('Initializing pyramid for %s from %s' % 
+        self.procline('Initializing pyramid for %s from %s' %
                 (job.func_name, job.origin))
         try:
             super(PyramidWorker, self).perform_job(job)
-            if HAVE_TRANSACTION:
-                get_transaction.commit()
         except:
             if HAVE_TRANSACTION:
-                get_transaction.abort()
+                get_transaction().abort()
             raise
+        else:
+            if HAVE_TRANSACTION:
+                get_transaction().commit()
         finally:
             self.environment['closer']()
 
@@ -41,7 +42,7 @@ def run(options):
     with rq.Connection(environment['registry'].settings['rq.redis']):
         try:
             queues = map(Queue, options.queues)
-            w = PyramidWorker(options.config, queues, name=options.name)
+            w = PyramidWorker(environment, queues, name=options.name)
             w.work(burst=options.burst)
         except ConnectionError as e:
             print(e)
