@@ -1,0 +1,2 @@
+include *.txt *.ini *.cfg *.rst *.json *.sh
+recursive-include src/pyramid_rq *.ico *.png *.css *.gif *.jpg *.jpeg *.pt *.txt *.mak *.mako *.js *.html *.xml *.json *.sh *.ini *.rst *.py
