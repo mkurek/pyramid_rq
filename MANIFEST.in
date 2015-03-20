@@ -1,0 +1,2 @@
+global-include README.rst CHANGES.rst LICENSE
+recursive-include doc *.py *.rst *.txt *.html *.css *.js *.png *.git *.jpg *.conf *.bat *.pdf *.docx *.otf *.eot *.svg *.woff *.ttf *.gif
