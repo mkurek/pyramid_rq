@@ -1,2 +1,2 @@
-global-include README.rst CHANGES.rst LICENSE
-recursive-include doc *.py *.rst *.txt *.html *.css *.js *.png *.git *.jpg *.conf *.bat *.pdf *.docx *.otf *.eot *.svg *.woff *.ttf *.gif
+include *.txt *.ini *.cfg *.rst *.json *.sh
+recursive-include src/pyramid_rq *.ico *.png *.css *.gif *.jpg *.jpeg *.pt *.txt *.mak *.mako *.js *.html *.xml *.json *.sh *.ini *.rst *.py
